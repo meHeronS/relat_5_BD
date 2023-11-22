@@ -50,7 +50,7 @@ class DatabaseHelper {
              $columnadress TEXT NOT NULL,
              $columncpf TEXT NOT NULL,
              $columnmail TEXT NOT NULL,
-             $columnphone TEXT NOT NULL,
+             $columnphone TEXT NOT NULL
            )
            ''');
   }
@@ -88,5 +88,18 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> queryAllRows() async {
     Database db = await instance.database;
     return await db.query(table);
+  }
+
+  Future<void> deleteDatabase(String databasePath) async {
+    String path = await getDatabasesPath();
+    String databasePath = '$path/table.db';
+
+    // Certifique-se de fechar o banco de dados antes de excluí-lo
+    //return await database.close();
+
+    // Exclua o banco de dados
+    await deleteDatabase(databasePath);
+
+    print('Banco de dados excluído com sucesso!');
   }
 }

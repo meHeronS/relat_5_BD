@@ -71,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
       mail: _mail.text,
       phone: _phone.text,
     );
+    
     int id = await dbHelper.insert(newNote);
     setState(() {
       newNote.id = id;
@@ -120,11 +121,50 @@ class _MyHomePageState extends State<MyHomePage> {
     _consultar_bd();
   }
 
+  //função deletar o BD
+  void _deleteBD(int index) async {
+    //await dbHelper.deleteTable(_notes[index].id!);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter SQLite CRUD'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children:<Widget> [
+          DrawerHeader(
+            decoration: BoxDecoration(
+            color: Colors.deepPurple,
+        ),
+            child: Text(
+              'Trabalho de Persistencia de Dados',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+        ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Página Inicial'),
+              onTap: (){
+                Navigator.pop(context);
+              },
+            ),
+      ListTile(
+        leading: Icon(Icons.info),
+        title: Text('Informações'),
+        onTap: () {
+          // Adicione a lógica para a ação quando o item for tocado
+          Navigator.pop(context); // Fecha o drawer
+        },
+      ),
+          ],
+        ),
       ),
       body: Center(
         child: Padding(

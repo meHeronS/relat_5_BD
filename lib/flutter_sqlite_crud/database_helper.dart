@@ -90,16 +90,16 @@ class DatabaseHelper {
     return await db.query(table);
   }
 
-  Future<void> deleteDatabase(String databasePath) async {
+  /*Future<void> deleteDatabase(String databasePath) async {
     String path = await getDatabasesPath();
     String databasePath = '$path/table.db';
 
     // Certifique-se de fechar o banco de dados antes de excluí-lo
-    //return await database.close();
+    return await database.close();
 
     // Exclua o banco de dados
     await deleteDatabase(databasePath);
 
     print('Banco de dados excluído com sucesso!');
-  }
+  }*/
 }

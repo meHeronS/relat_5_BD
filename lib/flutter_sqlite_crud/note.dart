@@ -34,7 +34,6 @@ class Note {
       phone: map['phone'],
       cpf: map['cpf'],
       mail: map['mail'],
-
     );
   }
 }
